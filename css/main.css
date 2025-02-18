@@ -1,0 +1,25 @@
+
+.noround{
+    border-radius: 0px;
+}
+
+
+.custom-btn{
+    color:white;
+    background-color: #d21616;
+}
+.custom-btn:hover{
+    color:white;
+    background-color: rgb(95, 47, 12);
+}
+.blue-btn{
+    color:white;
+    background-color: #13357B;
+}
+.blue-btn:hover{
+    color:white;
+    background-color: #031a48;
+}
+
+      
+  
