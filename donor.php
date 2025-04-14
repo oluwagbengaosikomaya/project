@@ -1,7 +1,9 @@
 <?php
 session_start();
 require_once "classes/Donation.php";
-require_once "partials/admin_header.php";
+require_once "partials/headeradmin.php";
+require_once "admin_guard.php";
+
 $dor = new Donation;
 $getdonor = $dor->fetch_donor();
 ?>
@@ -58,7 +60,7 @@ $getdonor = $dor->fetch_donor();
                       <input type="hidden" name="stat" value="<?php echo $dor['DonorID']; ?>">
                       <button class="btn btn-primary btn-sm" name="update">Confirm</button>
                       <input type="hidden" name="del" value="<?php echo $dor['DonorID']; ?>">
-                      <button class="btn btn-danger btn-sm" name="updel">Delete</button>
+                      <!-- <button class="btn btn-danger btn-sm" name="updel">Delete</button> -->
                     </form>
                   </td>
             </tr>
@@ -70,6 +72,19 @@ $getdonor = $dor->fetch_donor();
     <?php
     }
   ?>
+
+<?php
+              if(isset($_SESSION['admin_id'])){
+                ?>
+            
+                <?php
+              }else{
+                ?>
+
+
+                <?php
+              }
+              ?>
   </div>
   <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.js"></script>
 </body>

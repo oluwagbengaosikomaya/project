@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "user_guard.php";
-require_once "partials/header2.php";
+require_once "partials/header5.php";
 require_once "classes/payment.php";
 $p = new Payment;
 $paypay = $p->get_donor_amount();

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "user_guard.php";
-require_once "partials/header.php";
+require_once "partials/header5.php";
 require_once "classes/Payment.php";
 $p = new Payment;
 $session_ref = isset($_SESSION['refno'])? $_SESSION['refno'] : 0;

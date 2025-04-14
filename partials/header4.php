@@ -75,11 +75,11 @@ margin-left: 10px;
                 
 
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href='#'>Get-Involved</a>
+                    <a class="nav-link active" aria-current="page" href='getinvolve.php'>Get-Involved</a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href='#'>Projects</a>
+                    <a class="nav-link active" aria-current="page" href='userproject.php'>Projects</a>
                   </li>
 
                   <li class="nav-item">

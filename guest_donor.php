@@ -1,6 +1,7 @@
 <?php
 require_once "classes/Payment1.php";
-require_once "partials/admin_header.php";
+require_once "partials/headeradmin.php";
+require_once "admin_guard.php";
 $dor = new Payment1;
 $getguest = $dor->fetch_guest();
 ?>

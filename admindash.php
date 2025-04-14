@@ -2,6 +2,7 @@
 session_start();
 
 require_once "partials/admin_header.php";
+require_once "admin_guard.php";
 
 ?>
 
@@ -35,6 +36,20 @@ require_once "partials/admin_header.php";
           </div>
           <div class="col-md-9 p-4">
             <h1>DETAILS OF USERS</h1>
+
+
+            <?php
+              if(isset($_SESSION['admin_id'])){
+                ?>
+            
+                <?php
+              }else{
+                ?>
+
+
+                <?php
+              }
+              ?>
 </div>
 
             

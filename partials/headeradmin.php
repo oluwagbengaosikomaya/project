@@ -89,44 +89,39 @@ margin-left: 10px; */
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href='userproject.php'>Project</a>
+                    <a class="nav-link active" aria-current="page" href='userproject.php'>Projects</a>
                   </li>
-
 
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href='contact.php'>Contact Us</a>
                   </li>      
 
               </ul>
-              &nbsp  &nbsp  &nbsp &nbsp
 
               <button class="btn btn-outline-success" type="button" id="admin"><a class="nav-link" href="adminlogin.php">ADMIN</a></button>
 
           
-              &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp
+              &nbsp  &nbsp  &nbsp
               <div class="d-flex" role="search">
 
               <?php
-              if(isset($_SESSION['DonorID'])){
+              if(isset($_SESSION['admin_id'])){
                 ?>
-              <a href="profile.php" class="btn btn-outline-info btn-sm me-3">My profile</a>
-
+              
               <a href="logout.php" class="btn btn-outline-danger btn-sm">Logout</a>
+
+
                 <?php
               }else{
                 ?>
 
-                
-                <a href="login.php" class="btn btn-primary btn-sm" type="submit">Login</a>
-                &nbsp  &nbsp  &nbsp &nbsp  &nbsp  &nbsp &nbsp
-                <a href="register.php" class="btn btn-primary btn-sm ms-1" type="submit">Register</a>
+                <!-- <a href="login.php" class="btn btn-primary btn-sm" type="submit">Login</a> -->
+
+
                 <?php
               }
               ?>
               </div>
-
-              <button class="btn btn-outline-danger" type="button" id="donate"><a class="nav-link" href="donate.php">DONATE</a></button>
-           
           </nav>
 
       </nav>

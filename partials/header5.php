@@ -82,9 +82,11 @@
             <a class="nav-link active" aria-current="page" href='index.php'>Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href='getinvolve.php'>Get-Involved</a>
+            <a class="nav-link active" aria-current="page" href='#'>Get-Involved</a>
           </li>
-          
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href='#'>Projects</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href='contact.php'>Contact Us</a>
           </li>
@@ -106,6 +108,5 @@
           }
           ?>
         </div>
-        <button class="btn btn-outline-danger" type="button" id="donate"><a class="nav-link" href="donate.php">DONATE</a></button>
       </nav>
     </nav>

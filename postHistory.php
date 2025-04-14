@@ -3,7 +3,7 @@ session_start();
 require_once "classes/Post.php";
 $po = new Post;
 $posts = $po->fetch_post();
-require_once "partials/header2.php";
+require_once "partials/headeradmin.php";
 ?>
 
 <div class="container-fluid">

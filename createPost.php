@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once "partials/header2.php";
+require_once "partials/headeradmin.php";
+require_once "admin_guard.php";
 ?>
 <div class="container-fluid">
     <div class="row">

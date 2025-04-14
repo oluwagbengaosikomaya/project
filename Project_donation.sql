@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2025 at 02:49 PM
+-- Generation Time: Apr 03, 2025 at 09:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_pass`, `admin_user`, `Lastloggedindate`) VALUES
-(3, '$2y$10$7LBln8abmsNQjbBeq1bYuO.7J6B646JdiEnj6oaD0Eg5h0U/VJ4UG\r\n', 'delthel', '2024-12-31 11:59:53');
+(3, '$2y$10$KHPZwAjbXIPb/WdKPG28n.Nd0FeIiVyo1EeuyM8ZcFPTLktsd5n9G', 'delthel', '2024-12-31 11:59:53'),
+(5, '$2y$10$paRtqVFkKjXU1WOwj2ptcee8miLjasXa/RIUiYq0IbtopMHJjmrk.', 'moat', '2025-03-21 13:41:42');
 
 -- --------------------------------------------------------
 
@@ -109,6 +110,13 @@ CREATE TABLE `donor` (
   `Date Registered` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `donor`
+--
+
+INSERT INTO `donor` (`DonorID`, `donor_fname`, `donor_lname`, `donor_address`, `donor_phoneno`, `donor_password`, `donor_email`, `donor_status`, `Date Registered`) VALUES
+(17, 'samson', 'kayode', NULL, '07055108000', '$2y$10$arsSlOLg6wgUVNjw23mWLu24fbBDQzq2GhRAmMOWemyqDne/d5vE6', 'samson@yahoo.com', 'Active', '2025-04-02 11:19:44');
+
 -- --------------------------------------------------------
 
 --
@@ -145,17 +153,6 @@ CREATE TABLE `guest_donor` (
   `created` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `guest_donor`
---
-
-INSERT INTO `guest_donor` (`guest_id`, `guest_fname`, `guest_lname`, `guest_email`, `guest_phoneno`, `guest_amount`, `txn_id`, `payment_status`, `created`, `modified`) VALUES
-(77, 'kayode', 'samson', 'samson@yahoo.com', '080223', 600.00, '', '', '2024-12-31 07:02:21', '2024-12-31 07:02:21'),
-(78, 'kayode', 'samson', 'samson@yahoo.com', '080223', 600.00, '', '', '2024-12-31 07:03:41', '2024-12-31 07:03:41'),
-(79, 'wole', 'samuel', 'wale@yahoo.com', '08976', 909.00, '', '', '2024-12-31 07:19:59', '2024-12-31 07:19:59'),
-(89, 'kayode', 'samson', 'mark@yahoo.com', '12345678', 9000.00, '', '', '2025-02-09 14:07:19', '2025-02-09 14:07:19'),
-(90, 'simisola', 'opeyemi', 'simisola@gmail.com', '09093103031', 50000.00, '', '', '2025-02-09 16:33:30', '2025-02-09 16:33:30');
 
 -- --------------------------------------------------------
 
@@ -200,8 +197,7 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `payment_date`, `payment_method`, `payment_amount_paid`, `payment_donorId`, `payment_refno`, `payment_status`, `payment_recordaddedOn`) VALUES
-(20, '2025-02-09 14:11:40', 'card', 1000.00, 10, '17391103001854341338', 'completed', '2025-02-09 14:11:40'),
-(21, '2025-02-10 11:27:15', 'card', 1000.00, 11, '1739186835911000261', 'completed', '2025-02-10 11:27:15');
+(26, '2025-04-02 11:20:02', 'card', 1000.00, 17, '1743589202924483228', 'pending', '2025-04-02 10:20:02');
 
 -- --------------------------------------------------------
 
@@ -220,14 +216,6 @@ CREATE TABLE `payment1` (
   `payment1_status` enum('pending','failed','completed','') NOT NULL,
   `payment1_recordaddedOn` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `payment1`
---
-
-INSERT INTO `payment1` (`payment1_id`, `payment1_date`, `paymen1_method`, `payment1_amount_paid`, `payment1_guest_id`, `payment1_guest_email`, `payment1_refno`, `payment1_status`, `payment1_recordaddedOn`) VALUES
-(11, '2025-02-09 14:07:19', 'card', 9000.00, 0, 'mark@yahoo.com', '17391100391367816247', 'completed', '2025-02-09 14:07:19'),
-(12, '2025-02-09 16:33:30', 'card', 50000.00, 0, 'simisola@gmail.com', '1739118810778641441', 'completed', '2025-02-09 16:33:30');
 
 -- --------------------------------------------------------
 
@@ -251,13 +239,23 @@ CREATE TABLE `post` (
 
 CREATE TABLE `project` (
   `ProjectID` int(11) NOT NULL,
-  `ProjectName` varchar(100) DEFAULT NULL,
-  `ProjectCoverPicture` varchar(100) DEFAULT NULL,
-  `ProjectDescription` varchar(100) DEFAULT NULL,
+  `ProjectName` varchar(225) DEFAULT NULL,
+  `ProjectCoverPicture` varchar(1000) DEFAULT NULL,
+  `ProjectDescription` mediumtext DEFAULT NULL,
   `ProjectAmount` varchar(100) DEFAULT NULL,
-  `ProjectDateAdded` datetime DEFAULT current_timestamp(),
-  `CategoryID` int(11) NOT NULL
+  `ProjectLocation` varchar(225) DEFAULT NULL,
+  `ProjectManager` varchar(225) DEFAULT NULL,
+  `ProjectDateAdded` timestamp(6) NOT NULL DEFAULT current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`ProjectID`, `ProjectName`, `ProjectCoverPicture`, `ProjectDescription`, `ProjectAmount`, `ProjectLocation`, `ProjectManager`, `ProjectDateAdded`) VALUES
+(6, 'Give Food &amp; Bread to 2500 Families in Nigeria', '67ee2fb532a05.jpg', 'Summary\r\nThis project aims to provide essential relief services, including bread distribution on a daily basis and monthly food baskets, to approximately 2,500 families living in refugee camps along the Nigerian border. As families begin to gradually return to their villages and towns to rebuild their destroyed homes and start anew, others remain in the camps due to dire financial conditions. This project seeks to support both groups during this transitional phase.\r\n\r\nChallenge\r\nAfter years of displacement and suffering, many families in Nigeria have started returning to their homes following the end of oppressive rule. However, these families face enormous challenges, including rebuilding their homes, securing livelihoods, and meeting basic needs such as food. Meanwhile, families still living in camps due to financial difficulties continue to endure harsh conditions with limited access to essentials like bread, the primary source of food for most households.\r\n\r\nSolution\r\nThrough your generous donations, we will continue to provide daily bread to the most vulnerable families, ensuring they have access to this essential staple. Monthly food baskets will also be distributed to support both returning families and those who remain in camps. Each basket contains essential items such as rice, sugar, tomato paste, tea, oil, vegetable ghee, bulgur, and pasta, providing balanced nutrition to help families regain strength and stability during this transitional period.\r\n\r\nLong-Term Impact\r\nThis project will provide much-needed support to families as they rebuild their lives and homes after years of conflict and displacement. For those returning, it offers a lifeline during the challenging process of resettlement and reconstruction. For those remaining in camps, it ensures they receive basic nutrition and stability as they plan their next steps. Your donation, no matter the size, will play a vital role in creating a brighter, more hopeful future for Nigerian families.', '750,000', 'Northern Kaduna', 'Sanusi Bellow', '2025-04-03 06:50:29.208754'),
+(7, 'Empower a Girl: For Self-Reliance', '67ee311a15360.jpg', 'Summary\r\nFrom 2016, Kole Intellectual Forum (KIFA) conducted an action research in Kole District Local Government of Uganda; and established that, children in the public primary schools in this area are performing poorly because of a number of weaknesses; however, inventions were made; the research revealed that: the major problem is being generated from the home of almost each and every child with the girl child most affected. KIFA intends to empower a girl child through Home Economics.\r\n\r\nChallenge\r\nAfter KIFA conducting action research in this area from 2016 to date; particularly, the poor performing public primary schools; their performance improved greatly; however, when the project team made a follow-up on them (pupils), the outcome revealed that: a greater percentage of them, to about 80% failed to go to the next level of a education because of the inability of their families to provide them with necessary school requirements.\r\n\r\nSolution\r\nThis project therefore intends to address this problem by empowering a girl child for self-reliance with the knowledge of Home Economics. Unlike the traditional lives of those had been in this area before, the aim of the project is to equip or skill these girls with this knowledge so that, they can be able to produce stable homes those are economically viable with the capacities to address education problems of their children and beyond.\r\n\r\n\r\nLong-Term Impact\r\nIn the long ran, if these girls out of schools in this area are empowered, with the knowledge of Home Economics; they will definitely produce economically viable homes that will benefit their society and at the same time be able to provide for their children the basic school requirements needed for their education; hence, leading to the improvement of their quality, sustainable and potential education.', '500000', 'Allen Ikeja', 'Kole Intellectual Forum', '2025-04-03 06:56:26.088812'),
+(8, 'Lifeskills for 2,587 Children in SouthAfrica', '67ee325044125.jpg', 'Summary\r\nJoin Keep The Dream196 in changing 2,587 South African orphaned and vulnerable children&#039;s lives. The kids aged 5-26yrs, changing families, villages and eventually the country, by transferring life skills and infusing hope, we are impacting and building South Africa today. The children learn and apply for example: integrity, honesty &amp; self leadership in practical everyday situations. &quot;Turning 18 all I had to look forward to was learning to smoke and dying of AIDS, now I have hope&quot;- says Ronny.\r\n\r\nChallenge\r\nCrime, teenage pregnancy, poverty, HIV, unemployment and hopelessness are the main challenges confronting children in Greater Tzaneen. We work with 87 volunteers in 78 villages helping children to build resilience to over come often horrendous life situations and build on those success&#039;s so that the children will have the emotional, physical and spiritual strength to enter adulthood as leaders helping others to achieve their dreams.\r\n\r\nSolution\r\nWe use the Scouts model of cascade training and peer support to empower the children to make wise decisions about their lives from a value&#039;s based perspective. We have a code of conduct which the children agree to in order to participate in the project. The children then are involved in many different activities which are age and skills appropriate as they develop as young leaders. A feature of our project is that each group must be involved in a community project to give back to their village.\r\n\r\nLong-Term Impact\r\nIn 18 yrs we have worked with an excess of 15,000 children. - Teenage pregnancy has reduced from 13%provincially to 0.07% amongst our program. - Matric Pass rate of 91% governments pass rate is 62% - We have already produced doctors, lawyers, social workers, physio&#039;s, occupational therapists, teachers, nurses, mechanics, fitters, electricians etc The children have hope for a future and the skills to realize their dreams. We are changing South Africa - one child at a time!', '1,500,000', 'South Africa Embassy', 'Keep The Dream196', '2025-04-03 07:01:36.280342');
 
 --
 -- Indexes for dumped tables
@@ -334,7 +332,7 @@ ALTER TABLE `post`
 -- Indexes for table `project`
 --
 ALTER TABLE `project`
-  ADD PRIMARY KEY (`ProjectID`,`CategoryID`);
+  ADD PRIMARY KEY (`ProjectID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -344,7 +342,7 @@ ALTER TABLE `project`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -368,7 +366,7 @@ ALTER TABLE `donations`
 -- AUTO_INCREMENT for table `donor`
 --
 ALTER TABLE `donor`
-  MODIFY `DonorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `DonorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `donor_amount`
@@ -380,7 +378,7 @@ ALTER TABLE `donor_amount`
 -- AUTO_INCREMENT for table `guest_donor`
 --
 ALTER TABLE `guest_donor`
-  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `newsletter`
@@ -392,47 +390,35 @@ ALTER TABLE `newsletter`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `payment1`
 --
 ALTER TABLE `payment1`
-  MODIFY `payment1_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `payment1_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `ProjectID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ProjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `category`
---
-ALTER TABLE `category`
-  ADD CONSTRAINT `category` FOREIGN KEY (`CategoryID`) REFERENCES `admin` (`admin_id`);
-
---
 -- Constraints for table `donations`
 --
 ALTER TABLE `donations`
   ADD CONSTRAINT `Donations` FOREIGN KEY (`DonationID`) REFERENCES `admin` (`admin_id`);
-
---
--- Constraints for table `project`
---
-ALTER TABLE `project`
-  ADD CONSTRAINT `Project` FOREIGN KEY (`ProjectID`) REFERENCES `admin` (`admin_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,6 +3,7 @@ session_start();
 require_once "partials/header.php";
 require_once "classes/Newsletter.php";
 require_once "classes/Post.php";
+
 $po = new Post;
 $posts = $po->fetch_post();
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;

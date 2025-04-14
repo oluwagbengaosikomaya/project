@@ -31,4 +31,18 @@
                    Post History
                   </a>
                 </li>
+
+                <li>
+                  <a href="createproject.php" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                   Project
+                  </a>
+                </li>
+
+                <li>
+                  <a href="projecthistory.php" class="nav-link text-white">
+                    <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                   Project History
+                  </a>
+                </li>
               </ul>

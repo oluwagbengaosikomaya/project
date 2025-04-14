@@ -1,6 +1,13 @@
 <?php
     $pass = "admin000";
-    $hashed = password_hash($admin000, PASSWORD_DEFAULT);
+    $hashed = password_hash($pass, PASSWORD_DEFAULT);
+    // echo $hashed;
+   
+?>
+
+<?php
+    $pass = "moat123";
+    $hashed = password_hash($pass, PASSWORD_DEFAULT);
     // echo $hashed;
    
 ?>
